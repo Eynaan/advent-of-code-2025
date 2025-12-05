@@ -12,6 +12,14 @@ public class Range {
         this.end = end;
     }
 
+    public long getStart() {
+        return start;
+    }
+
+    public long getEnd() {
+        return end;
+    }
+
     /**
      * Check if the range contains the given value.
      * @param value

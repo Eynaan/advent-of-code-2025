@@ -8,7 +8,6 @@ public class MainPuzzle1 {
         if (args.length > 0) {
             filePath = args[0];
         } else {
-            // Default file name if none is provided as an argument
             filePath = "main/src/day5/input.txt";
         }
 
