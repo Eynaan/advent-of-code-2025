@@ -1,5 +1,6 @@
 package day4;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaperYard {
@@ -81,6 +82,41 @@ public class PaperYard {
         return count;
     }
 
+    /**
+     * Get positions of all accessible rolls
+     * @return list of positions of accessible rolls
+     */
+    public List<Position> getAccessibleRollsPositions() {
+        List<Position> accessiblePositions = new ArrayList<>();
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < columns; c++) {
+                Position p = new Position(r, c);
+                if (isAccessible(p)) {
+                    accessiblePositions.add(p);
+                }
+            }
+        }
+        return accessiblePositions;
+    }
+
+    /**
+     * Remove all accessible rolls once and return the count removed
+     * @return the number of rolls removed
+     */
+    public int removeAccessibleRollsOnce(){
+        List<Position> accessible = getAccessibleRollsPositions();
+        for(Position p : accessible){
+            grid[p.getRow()][p.getColumn()] = '.'; // remove roll
+        }
+        return accessible.size();
+    }
+    
+    /**
+     * Check if given row and column are within bounds
+     * @param row
+     * @param column
+     * @return true if in bounds, false otherwise
+     */
     private boolean inBounds(int row, int column) {
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
